@@ -45,9 +45,11 @@ public class Tokenizer {
 
         // HanLP
         List<Term> termList = HanLP.segment(sentence);
+        termList.removeIf(c -> String.valueOf(c.word).equals(" "));
         results.addAll(termList
                 .stream()
-                .map(term -> new Word(term.word, term.nature.name()))
+                .map(term ->
+                        new Word(term.word, term.nature.name()))
                 .collect(Collectors.toList())
         );
 

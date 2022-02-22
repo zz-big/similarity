@@ -44,6 +44,9 @@ public class CharBasedSimilarity implements ISimilarity {
         String shortString = StringUtil.getShortString(word1, word2);
         for (int i = 0; i < longString.length(); i++) {
             Character ch = longString.charAt(i);
+            if (ch ==' '){
+                continue;
+            }
             if (shortString.contains(ch.toString())) {
                 sameChars.add(ch);
             }
